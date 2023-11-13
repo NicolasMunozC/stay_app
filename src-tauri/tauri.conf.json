@@ -36,9 +36,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "stay-app",
-        "width": 800,
-        "height": 600
+        "title": "Stay APP",
+        "width": 400,
+        "height": 800
       }
     ]
   }
