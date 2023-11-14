@@ -6,6 +6,7 @@ import { BiCog, BiPause, BiPlay, BiFastForward, BiMoon, BiSun, BiAlarm } from 'r
 import { useTheme } from "next-themes";
 import { themes } from "./utils/themes";
 import { TbBrain, TbCoffee } from "react-icons/tb";
+import { sendAlert } from "./utils/tauri";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
   const [currentTheme, setCurrentTheme] = useState('red')
   const {theme, setTheme} = useTheme()
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [soundActive, setSoundActive] = useState(true)
 
   // useEffect that change between stages and reset timers
   useEffect( () => {
@@ -60,7 +62,31 @@ function App() {
         } else {
           if(currentStage === pomodoroStages.length - 1){
             resetPomodoro()
+            sendAlert({
+              title: "Felicitaciones 😍",
+              body: "Has completado tu sesión de pomodoro!!",
+              sound: soundActive
+            })
           } else {
+            if (pomodoroStages[currentStage] === "Focus") {
+              sendAlert({
+                title: "Felicitaciones 😍",
+                body: "Has completado tu sesión de concentración, te toca descansar!!",
+                sound: soundActive
+              })
+            } else if (pomodoroStages[currentStage] === "Short Break") {
+              sendAlert({
+                title: "Vamos de nuevo!! 😱",
+                body: "se ha acabado el descanso, recupera energías y vamos seguimos con todo!!!",
+                sound: soundActive
+              })
+            } else {
+              sendAlert({
+                title: "Felicitaciones!! 😱",
+                body: "Has avanzado muchisimoo!, se ha terminado tu sesión, eres genial!!",
+                sound: soundActive
+              })
+            }
             setCurrentStage(currentStage + 1)
           }
         }
@@ -77,7 +103,7 @@ function App() {
         placement="center"
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
               <ModalHeader className="flex flex-col gap-1">Configuraciones</ModalHeader>
               <ModalBody>
@@ -104,6 +130,14 @@ function App() {
               >
                 Comenzar automáticamente
               </Switch>
+              <Switch
+                isSelected={soundActive}
+                size="lg"
+                color="success"
+                onChange={()=>{setSoundActive(!autoStart)}}
+              >
+                Sonido
+              </Switch>
               <p>Tiempos:</p>
               <div className="flex flex-row gap-3">
                 <Input
@@ -114,7 +148,7 @@ function App() {
                   labelPlacement="outside"
                   startContent={ <BiAlarm />}
                   isRequired
-                  onChange={(e)=>{setFocusTime(parseInt(e.target.value))}}
+                  onChange={(e)=>{parseInt(e.target.value) && setFocusTime(parseInt(e.target.value) < 1 ? 1 : parseInt(e.target.value))}}
                   />
                 <Input
                   type="number"
@@ -124,7 +158,7 @@ function App() {
                   labelPlacement="outside"
                   startContent={ <BiAlarm />}
                   isRequired
-                  onChange={(e)=>{setShortBreakTime(parseInt(e.target.value))}}
+                  onChange={(e)=>{parseInt(e.target.value) && setShortBreakTime(parseInt(e.target.value) < 1 ? 1 : parseInt(e.target.value))}}
                   />
                 <Input
                   type="number"
@@ -134,7 +168,7 @@ function App() {
                   labelPlacement="outside"
                   startContent={ <BiAlarm />}
                   isRequired
-                  onChange={(e)=>{setLongBreakTime(parseInt(e.target.value))}}
+                  onChange={(e)=>{parseInt(e.target.value) && setLongBreakTime(parseInt(e.target.value) < 1 ? 1 : parseInt(e.target.value))}}
                 />
 
               </div>
