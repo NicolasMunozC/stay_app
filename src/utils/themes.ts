@@ -32,9 +32,9 @@ export const themes:any = {
           green: 'bg-green-100'
         },
         specialBg: {
-          red: 'bg-red-100 hover:bg-red-200',
-          blue: 'bg-blue-100 hover:bg-blue-200',
-          green: 'bg-green-100 hover:bg-green-200'
+          red: 'bg-red-200 hover:bg-red-300',
+          blue: 'bg-blue-200 hover:bg-blue-300',
+          green: 'bg-green-200 hover:bg-green-300'
         }
       }
     },

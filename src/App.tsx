@@ -194,9 +194,9 @@ function App() {
               <h1 className={`${isRunning ? 'font-bold' : 'font-thin'}`}>{currentSeconds > 9 ? currentSeconds : '0' + currentSeconds}</h1>
             </div>
 
-            <div className='flex flex-row gap-4 mt-6 mx-auto'>
+            <div className='flex flex-row gap-4 mt-6 mx-auto items-center'>
               <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-3xl ${themes[theme!].button.text[currentTheme]}`} size="lg" isIconOnly variant="light" color={false} onClick={()=>{onOpen()}}><BiCog/></Button>
-              <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-3xl ${themes[theme!].button.text[currentTheme]}`} size="lg" isIconOnly variant="light" color={false} onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? <BiPause/> : <BiPlay/>}</Button>
+              <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-[70px] h-[70px] w-[100px] ${themes[theme!].button.text[currentTheme]}`} isIconOnly variant="light" color={false} onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? <BiPause/> : <BiPlay/>}</Button>
               <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-3xl ${themes[theme!].button.text[currentTheme]}`} size="lg" isIconOnly variant="light" color={false} onClick={()=>{currentStage === pomodoroStages.length - 1 ? setCurrentStage(0) : setCurrentStage(currentStage + 1)}}><BiFastForward/></Button>
             </div>
 
