@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "stay-app",
+    "productName": "Stay",
     "version": "0.0.0"
   },
   "tauri": {
@@ -39,7 +39,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "Stay APP",
+        "title": "Stay - Simple Pomodoro APP",
         "width": 400,
         "height": 800
       }
