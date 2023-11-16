@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { pomodoroStages } from "./utils/pomodoroStages";
-import { Button, Chip, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Switch, useDisclosure } from "@nextui-org/react";
+import { Chip, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Switch, useDisclosure } from "@nextui-org/react";
 import { BiCog, BiPause, BiPlay, BiFastForward, BiMoon, BiSun, BiAlarm } from 'react-icons/bi'
 import { useTheme } from "next-themes";
 import { themes } from "./utils/themes";
@@ -195,9 +195,9 @@ function App() {
             </div>
 
             <div className='flex flex-row gap-4 mt-6 mx-auto items-center'>
-              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid p-2 text-3xl text-center place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" size="lg" isIconOnly variant="light" onClick={()=>{onOpen()}}><BiCog/></button>
-              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid text-[70px] h-[70px] w-[100px] place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" isIconOnly variant="light" onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? <BiPause/> : <BiPlay/>}</button>
-              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid p-2 text-3xl text-center place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" size="lg" isIconOnly variant="light" onClick={()=>{currentStage === pomodoroStages.length - 1 ? setCurrentStage(0) : setCurrentStage(currentStage + 1)}}><BiFastForward/></button>
+              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid p-2 text-3xl text-center place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" onClick={()=>{onOpen()}}><BiCog/></button>
+              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid text-[70px] h-[70px] w-[100px] place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? <BiPause/> : <BiPlay/>}</button>
+              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid p-2 text-3xl text-center place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" onClick={()=>{currentStage === pomodoroStages.length - 1 ? setCurrentStage(0) : setCurrentStage(currentStage + 1)}}><BiFastForward/></button>
             </div>
 
           </div>
