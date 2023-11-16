@@ -195,9 +195,9 @@ function App() {
             </div>
 
             <div className='flex flex-row gap-4 mt-6 mx-auto items-center'>
-              <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-3xl ${themes[theme!].button.text[currentTheme]}`} size="lg" isIconOnly variant="light" color={false} onClick={()=>{onOpen()}}><BiCog/></Button>
-              <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-[70px] h-[70px] w-[100px] ${themes[theme!].button.text[currentTheme]}`} isIconOnly variant="light" color={false} onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? <BiPause/> : <BiPlay/>}</Button>
-              <Button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full text-3xl ${themes[theme!].button.text[currentTheme]}`} size="lg" isIconOnly variant="light" color={false} onClick={()=>{currentStage === pomodoroStages.length - 1 ? setCurrentStage(0) : setCurrentStage(currentStage + 1)}}><BiFastForward/></Button>
+              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid p-2 text-3xl text-center place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" size="lg" isIconOnly variant="light" onClick={()=>{onOpen()}}><BiCog/></button>
+              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid text-[70px] h-[70px] w-[100px] place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" isIconOnly variant="light" onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? <BiPause/> : <BiPlay/>}</button>
+              <button className={`${themes[theme!].button.specialBg[currentTheme]} rounded-full grid p-2 text-3xl text-center place-content-center ${themes[theme!].button.text[currentTheme]}`} color="secondary" size="lg" isIconOnly variant="light" onClick={()=>{currentStage === pomodoroStages.length - 1 ? setCurrentStage(0) : setCurrentStage(currentStage + 1)}}><BiFastForward/></button>
             </div>
 
           </div>
